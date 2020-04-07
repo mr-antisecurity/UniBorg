@@ -91,7 +91,6 @@ async def _(event):
                     default_mirrors = step_one_response_json["result"]["default_mirrors"]
                     max_chunk_size = step_one_response_json["result"]["max_chunk_size"]
                     max_file_size = step_one_response_json["result"]["max_file_size"]
-                    max_mirrors = step_one_response_json["result"]["max_mirrors"]
 
                     # check file size limit
                     if int(file_size) >= int(max_file_size):
@@ -125,11 +124,6 @@ async def _(event):
                             # chunk = f_handle.read(chunk_size)
                             if not chunk:
                                 break
-                            headers = {
-                                "Content-Range": str(len(chunk)),
-                                "Content-Length": str(len(step_two_params) + len(chunk)),
-                                # "Content-Type": "multipart/form-data"
-                            }
 
                             # https://github.com/aio-libs/aiohttp/issues/3571#issuecomment-456528924
                             response = requests.post(

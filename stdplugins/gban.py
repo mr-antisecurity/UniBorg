@@ -23,7 +23,7 @@ async def _(event):
     if event.reply_to_msg_id:
         r = await event.get_reply_message()
         if r.forward:
-            r_from_id = r.forward.from_id or r.from_id
+            pass
         else:
             r_from_id = r.from_id
         await borg.send_message(

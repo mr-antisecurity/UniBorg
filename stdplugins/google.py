@@ -38,8 +38,8 @@ async def _(event):
     for result in response["results"]:
         text = result.get("title")
         url = result.get("url")
-        description = result.get("description")
-        image = result.get("image")
+        result.get("description")
+        result.get("image")
         output_str += " 👉🏻  [{}]({}) \n\n".format(text, url)
     end = datetime.now()
     ms = (end - start).seconds

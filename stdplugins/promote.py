@@ -13,7 +13,7 @@ from uniborg.util import admin_cmd
 async def _(event):
     if event.fwd_from:
         return
-    start = datetime.now()
+    datetime.now()
     to_promote_id = None
     rights = ChatAdminRights(
         change_info=True,
@@ -44,7 +44,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    start = datetime.now()
+    datetime.now()
     to_promote_id = None
     rights = ChatAdminRights(
         post_messages=True

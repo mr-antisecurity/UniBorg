@@ -32,4 +32,3 @@ async def _(event):
     else:
         await event.edit("SYNTAX: .calendar YYYY-MM-DD")
     end = datetime.now()
-    ms = (end - start).seconds

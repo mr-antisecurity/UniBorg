@@ -27,7 +27,6 @@ async def _(cas):
             r_dict = r.json() 
             if r_dict['ok']:
                 try: 
-                    more = r_dict['result']
                     # rights = ChatBannedRights(
                     #     until_date=None,
                     #     view_messages=True,

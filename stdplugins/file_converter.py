@@ -91,8 +91,8 @@ async def _(event):
         )
         # Wait for the subprocess to finish
         stdout, stderr = await process.communicate()
-        e_response = stderr.decode().strip()
-        t_response = stdout.decode().strip()
+        stderr.decode().strip()
+        stdout.decode().strip()
         
         if os.path.exists(new_required_file_name):
             end_two = datetime.now()

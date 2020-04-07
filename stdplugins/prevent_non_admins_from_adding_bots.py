@@ -41,5 +41,4 @@ async def kick_if_bots(event):
                     # maybe you don't have admin priveleges here :\
                     pass
         if is_ban_able:
-            # this is required if the group has a group administration bot
-            ban_reason_msg = await event.reply("!warn [user](tg://user?id={}) Please Do Not Add BOTs to this chat.".format(users_added_by))
+            pass

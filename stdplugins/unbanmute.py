@@ -52,7 +52,7 @@ async def _(event):
     # commands start with ".unban"
     if event.fwd_from:
         return
-    start = datetime.now()
+    datetime.now()
     to_ban_id = None
     rights = None
     input_cmd = event.pattern_match.group(1)

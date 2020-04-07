@@ -30,7 +30,7 @@ async def magnet_download(event):
 	#Add URL Into Queue 
 	try:	
 		download = aria2.add_uris(uris, options=None, position=None)
-	except Exception as e:
+	except Exception:
 		# await event.edit("`Error:\n`"+str(e))
 		return
 	gid = download.gid

@@ -63,8 +63,7 @@ async def _(event):
             now = time.time()
             diff = now - c_time
             percentage = downloader.get_progress() * 100
-            speed = downloader.get_speed()
-            elapsed_time = round(diff) * 1000
+            downloader.get_speed()
             progress_str = "[{0}{1}]\nProgress: {2}%".format(
                 ''.join("█" for i in range(math.floor(percentage / 5))),
                 ''.join("░" for i in range(20 - math.floor(percentage / 5))),
@@ -115,7 +114,6 @@ File Size: {}""".format(url, file_name, humanbytes(total_length)))
                 now = time.time()
                 diff = now - start
                 if round(diff % 5.00) == 0 or downloaded == total_length:
-                    percentage = downloaded * 100 / total_length
                     speed = downloaded / diff
                     elapsed_time = round(diff) * 1000
                     time_to_completion = round(

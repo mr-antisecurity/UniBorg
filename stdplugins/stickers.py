@@ -32,9 +32,6 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     if input_str:
         sticker_emoji = input_str
-
-    me = borg.me
-    userid = event.from_id
     packname = f"@By_Azade Pack"
     packshortname = f"By_Azade"  # format: Uni_Borg_userid
 
@@ -60,7 +57,6 @@ async def _(event):
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
-        dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
             await silently_send_message(bot_conv, "/cancel")
             if is_a_s:
@@ -74,11 +70,6 @@ async def _(event):
             if not response.text.startswith("Alright!"):
                 await event.edit(f"**FAILED**! @Stickers replied: {response.text}")
                 return
-            w = await bot_conv.send_file(
-                file=uploaded_sticker,
-                allow_cache=False,
-                force_document=True
-            )
             response = await bot_conv.get_response()
             if "Sorry" in response.text:
                 await event.edit(f"**FAILED**! @Stickers replied: {response.text}")
@@ -150,7 +141,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    input_str = event.pattern_match.group(1)
+    event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -193,7 +184,7 @@ async def _(event):
         await event.edit(f"Downloading {sticker_set.set.count} sticker(s) to .{Config.TMP_DOWNLOAD_DIRECTORY}{sticker_set.set.short_name}...")
         num_tasks = len(pending_tasks)
         while 1:
-            done, pending_tasks = await asyncio.wait(pending_tasks, timeout=2.5,
+            _, pending_tasks = await asyncio.wait(pending_tasks, timeout=2.5,
                 return_when=asyncio.FIRST_COMPLETED)
             try:
                 await event.edit(
@@ -315,7 +306,7 @@ def find_instance(items, class_or_tuple):
 
 def zipdir(path, ziph):
     # ziph is zipfile handle
-    for root, dirs, files in os.walk(path):
+    for root, _, files in os.walk(path):
         for file in files:
             ziph.write(os.path.join(root, file))
             os.remove(os.path.join(root, file))

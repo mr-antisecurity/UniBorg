@@ -24,7 +24,7 @@ async def imdb(e):
     remove_space = movie_name.split(' ')
     final_name = '+'.join(remove_space)
     page = requests.get("https://www.imdb.com/find?ref_=nv_sr_fn&q="+final_name+"&s=all")
-    lnk = str(page.status_code)
+    str(page.status_code)
     soup = bs4.BeautifulSoup(page.content,'lxml')
     odds = soup.findAll("tr","odd")
     mov_title = odds[0].findNext('td').findNext('td').text

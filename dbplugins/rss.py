@@ -22,7 +22,7 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 
 @borg.on(admin_cmd(pattern=("rss ?(.*)"))) # pylint:disable=E0602
 async def show_url(event):
-    tg_chat_id = str(event.chat_id)
+    str(event.chat_id)
     entity=await borg.get_input_entity(Config.RSS_POST_MSG_GROUP_ID)
     if event.pattern_match.group(1):
         tg_feed_link = event.pattern_match.group(1)
@@ -102,7 +102,6 @@ async def list_urls(event):
 @borg.on(admin_cmd(pattern=("addrss ?(.*)"))) # pylint:disable=E0602
 async def add_url_(event):
     if event.pattern_match.group(1):
-        chat = await event.get_chat()
 
         tg_chat_id = str(event.chat_id)
 
@@ -164,7 +163,6 @@ async def rss_update(event):
     # this loop checks for every row in the DB
     for row in user_data:
         row_id = row.id
-        tg_chat_id = row.chat_id
         tg_feed_link = row.feed_link
 
         feed_processed = parse(tg_feed_link)

@@ -13,7 +13,6 @@ import os
 @borg.on(admin_cmd(pattern="webupload ?(.+?|) --(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)")) # pylint:disable=E0602
 async def _(event):
 	await event.edit("processing ...")
-	PROCESS_RUN_TIME = 100
 	input_str = event.pattern_match.group(1)
 	selected_transfer = event.pattern_match.group(2)
 	if input_str:
@@ -48,7 +47,7 @@ async def _(event):
 		cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
 	)
 	stdout, stderr = await process.communicate()
-	e_response = stderr.decode().strip()
+	stderr.decode().strip()
 	# logger.info(e_response)
 	t_response = stdout.decode().strip()
 	# logger.info(t_response)
@@ -58,7 +57,7 @@ async def _(event):
 	if t_response:
 		try:
 			t_response = json.dumps(json.loads(t_response), sort_keys=True, indent=4)
-		except Exception as e:
+		except Exception:
 			# some sites don't return valid JSONs
 			pass
 		# assuming, the return values won't be longer than

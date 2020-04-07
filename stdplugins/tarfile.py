@@ -103,8 +103,8 @@ async def create_archive(input_directory):
         )
         # Wait for the subprocess to finish
         stdout, stderr = await process.communicate()
-        e_response = stderr.decode().strip()
-        t_response = stdout.decode().strip()
+        stderr.decode().strip()
+        stdout.decode().strip()
         if os.path.exists(compressed_file_name):
             try:
                 shutil.rmtree(input_directory)

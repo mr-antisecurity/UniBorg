@@ -55,7 +55,6 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 @borg.on(admin_cmd(pattern='count')) # pylint:disable=E0602
 async def stats(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
     """Command to get stats about the account"""
-    waiting_message = await event.edit('`Collecting stats, Wait Nibba`')
     start_time = time.time()
     private_chats = 0
     bots = 0
@@ -67,8 +66,6 @@ async def stats(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0
     creator_in_channels = 0
     unread_mentions = 0
     unread = 0
-    largest_group_member_count = 0
-    largest_group_with_admin = 0
     dialog: Dialog
     async for dialog in event.client.iter_dialogs():
         entity = dialog.entity

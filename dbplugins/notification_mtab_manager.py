@@ -58,7 +58,7 @@ async def create_dump_channel(event):
 @borg.on(admin_cmd(pattern="nolog ?(.*)")) # pylint:disable=E0602
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
-        reason = event.pattern_match.group(1)
+        event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
             if not no_log_pms_sql.is_approved(chat.id):
@@ -71,7 +71,7 @@ async def set_no_log_p_m(event):
 @borg.on(admin_cmd(pattern="dellog ?(.*)")) # pylint:disable=E0602
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
-        reason = event.pattern_match.group(1)
+        event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
             if no_log_pms_sql.is_approved(chat.id):
@@ -105,7 +105,7 @@ async def approve_p_m(event):
 async def approve_p_m(event):
     if event.fwd_from:
         return
-    reason = event.pattern_match.group(1)
+    event.pattern_match.group(1)
     chat = await event.get_chat()
     if Config.PM_LOGGR_BOT_API_ID is not None:
         if event.is_private:
@@ -156,8 +156,6 @@ async def on_new_private_message(event):
 
     message_text = event.message.message
     message_media = event.message.media
-    message_id = event.message.id
-    message_to_id = event.message.to_id
     chat_id = event.chat_id
     # logger.info(chat_id)
 

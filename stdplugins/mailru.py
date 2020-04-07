@@ -15,13 +15,10 @@ async def _(event):
     url = event.pattern_match.group(1)
     if event.fwd_from:
         return
-    input_str = event.pattern_match.group(1)
-    mone = await event.edit("Processing ...")
-    start = datetime.now()
-    reply_message = await event.get_reply_message()
+    event.pattern_match.group(1)
+    datetime.now()
     try:
-        c_time = time.time()
-        downloaded_file_name = Config.TMP_DOWNLOAD_DIRECTORY
+        time.time()
         await event.edit("Finish downloading to my local")
         command_to_exec = [
                 "./bin/cmrudl.py",
@@ -32,7 +29,6 @@ async def _(event):
         process = await asyncio.create_subprocess_shell(
         command_to_exec, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
         )
-        OUTPUT = f"**Files in DOWNLOADS folder:**\n"
         stdout, stderr = await process.communicate()
 
         if stdout.decode():

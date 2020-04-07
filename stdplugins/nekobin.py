@@ -21,7 +21,7 @@ def progress(current, total):
 async def _(event):
     if event.fwd_from:
         return
-    start = datetime.now()
+    datetime.now()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     input_str = event.pattern_match.group(1)

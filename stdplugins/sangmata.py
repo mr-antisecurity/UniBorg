@@ -18,7 +18,6 @@ async def _(event):
       await event.edit("```reply to text message```")
       return
    chat = "@SangMataInfo_bot"
-   sender = reply_message.sender
    if reply_message.sender.bot:
       await event.edit("```Reply to actual users message.```")
       return
@@ -41,11 +40,9 @@ async def _(event):
    if event.fwd_from:
       return 
    chat = "@fakemailbot"
-   command = "/generate"
    await event.edit("```Fakemail Creating, wait```")
    async with borg.conversation(chat) as conv:
       try:
-         m = await event.client.send_message("@fakemailbot","/generate")     
          await asyncio.sleep(5)
          k = await event.client.get_messages(entity="@fakemailbot", limit=1, reverse=False) 
          mail = k[0].text
@@ -60,11 +57,9 @@ async def _(event):
    if event.fwd_from:
       return 
    chat = "@fakemailbot"
-   command = "/id"
    await event.edit("```Fakemail list getting```")
    async with borg.conversation(chat) as conv:
         try:
-            m = await event.client.send_message("@fakemailbot","/id")     
             await asyncio.sleep(5)
             k = await event.client.get_messages(entity="@fakemailbot", limit=1, reverse=False) 
             mail = k[0].text
@@ -87,7 +82,6 @@ async def _(event):
        await event.edit("```reply to text message```")
        return
     chat = "@uploadbot"
-    sender = reply_message.sender
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
@@ -119,7 +113,6 @@ async def _(event):
        await event.edit("```reply to text message```")
        return
     chat = "@getidsbot"
-    sender = reply_message.sender
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return

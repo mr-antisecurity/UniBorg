@@ -152,7 +152,7 @@ async def _(event):
                     "e",
                     "-o" + extracted,
                     directory_name]
-            sp = subprocess.Popen(command_to_exec, stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
+            subprocess.Popen(command_to_exec, stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
             await borg.send_file(
                 event.chat_id,
                 directory_name + ".zip",

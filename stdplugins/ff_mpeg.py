@@ -60,7 +60,7 @@ async def ff_mpeg_trim_cmd(event):
     start = datetime.now()
     if len(cmt) == 3:
         # output should be video
-        cmd, start_time, end_time = cmt
+        _, start_time, end_time = cmt
         o = await cult_small_video(
             FF_MPEG_DOWN_LOAD_MEDIA_PATH,
             Config.TMP_DOWNLOAD_DIRECTORY,

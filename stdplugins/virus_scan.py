@@ -18,8 +18,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     url = input_str
     if event.reply_to_msg_id:
-        start = datetime.now()
-        reply_message = await event.get_reply_message()
+        datetime.now()
         try:
             params = {
                 'apikey': str(api),

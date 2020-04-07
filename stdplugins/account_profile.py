@@ -86,7 +86,6 @@ async def _(event):
     
     p_number = event.pattern_match.group(1)
     print(p_number)
-    chat = await event.get_chat()
     entity = await borg.get_entity(event.chat_id)
     try:
         a = await event.edit("getting profile pic changed or added date")

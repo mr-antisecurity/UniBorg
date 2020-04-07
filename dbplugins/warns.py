@@ -10,7 +10,7 @@ async def _(event):
     warn_reason = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     limit, soft_warn = sql.get_warn_setting(event.chat_id)
-    num_warns, reasons = sql.warn_user(reply_message.from_id, event.chat_id, warn_reason)
+    num_warns, _ = sql.warn_user(reply_message.from_id, event.chat_id, warn_reason)
     if num_warns >= limit:
         sql.reset_warns(reply_message.from_id, event.chat_id)
         if soft_warn:
@@ -35,7 +35,7 @@ async def _(event):
     result = sql.get_warns(reply_message.from_id, event.chat_id)
     if result and result[0] != 0:
         num_warns, reasons = result
-        limit, soft_warn = sql.get_warn_setting(event.chat_id)
+        limit, _ = sql.get_warn_setting(event.chat_id)
         if reasons:
             text = "This user has {}/{} warnings, for the following reasons:".format(num_warns, limit)
             text += "\r\n"

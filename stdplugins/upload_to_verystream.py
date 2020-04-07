@@ -68,14 +68,13 @@ async def _(event):
         if "." in file_name:
             file_name = file_name.rsplit(".", maxsplit=1)[0]
         file_name = file_name + str(time.time())
-        file_size = os.stat(required_file_name).st_size
         # https://stackoverflow.com/a/22058673/4723940
         sha_one_file_hash = get_sha_one_hash(required_file_name, 65536)
         # /* STEP 1: get upload_key */
         login = Config.VERY_STREAM_LOGIN
         key = Config.VERY_STREAM_KEY
         sha1 = sha_one_file_hash
-        mime = magic.Magic(mime=True)
+        magic.Magic(mime=True)
         step_zero_url = f"https://api.verystream.com/file/createfolder?login={login}&key={key}&name={file_name}"
         async with aiohttp.ClientSession() as session:
             resp_zero = await session.get(step_zero_url)

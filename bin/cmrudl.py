@@ -315,7 +315,7 @@ class Main(object):
 			entry = queue.pop()
 			if self.dict_has_props(entry, props) and entry['id'] == search_id:
 				return entry
-			for k, v in entry.items():
+			for _, v in entry.items():
 				if isinstance(v, list):
 					for e in v:
 						if isinstance(e, dict):

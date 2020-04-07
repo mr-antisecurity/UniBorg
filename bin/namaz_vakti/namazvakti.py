@@ -194,7 +194,7 @@ class namazvakti():
                 try:
                     f = open("./bin/namaz_vakti/db/cache/"+"cache_" + str(yer["sehir_id"]) + ".ndb",'x',encoding='utf-8')
                     f.close()
-                except FileExistsError as error:
+                except FileExistsError:
                     error = None
                     pass
                 with open("./bin/namaz_vakti/db/cache/"+"cache_" + str(yer["sehir_id"]) + ".ndb", 'wt', encoding='utf-8') as ver:

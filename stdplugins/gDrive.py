@@ -133,7 +133,6 @@ async def _(event):
     if event.fwd_from:
         return
     mone = await event.reply("Processing ...")
-    G_DRIVE_F_PARENT_ID = None
     await mone.edit("Custom Folder ID cleared successfully.")
     await event.delete()
 
@@ -365,8 +364,6 @@ async def DoTeskWithDir(http, input_directory, event, parent_id):
             r_p_id = await DoTeskWithDir(http, current_file_name, event, current_dir_id)
         else:
             file_name, mime_type = file_ops(current_file_name)
-            # current_file_name will have the full path
-            g_drive_link = await upload_file(http, current_file_name, file_name, mime_type, event, parent_id)
             r_p_id = parent_id
     # TODO: there is a #bug here :(
     return r_p_id

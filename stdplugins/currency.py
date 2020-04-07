@@ -32,4 +32,3 @@ async def _(event):
     else:
         await event.edit("`.currency number from to`")
     end = datetime.now()
-    ms = (end - start).seconds

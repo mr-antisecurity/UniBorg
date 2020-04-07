@@ -12,7 +12,6 @@ async def _(event):
     if event.fwd_from:
         return
     if event.reply_to_msg_id:
-        chat = await event.get_input_chat()
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)

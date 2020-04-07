@@ -20,7 +20,7 @@ async def _(event):
         return
     textx = await event.get_reply_message()
     message = event.pattern_match.group(1)
-    input_str = event.pattern_match.group(1)
+    event.pattern_match.group(1)
     if message:
         pass
     elif textx:
@@ -28,7 +28,6 @@ async def _(event):
     else:
         await event.edit("`Usage: .direct <url>`")
         return
-    mone = await event.edit("Processing ...")
     if not os.path.isdir(filedir):
         os.makedirs(filedir)
     reply = ''

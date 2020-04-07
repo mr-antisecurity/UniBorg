@@ -24,7 +24,6 @@ async def get_media(event):
     except:
     	pass
     channel_username= event.text
-    command = ['ls','temp','|','wc','-l' ]
     limit = channel_username[6:9]
     print(limit)
     channel_username = channel_username[11: ]
@@ -60,7 +59,6 @@ async def get_media(event):
     except:
     	pass
     channel_username= event.text
-    command = ['ls','temp','|','wc','-l' ]
     channel_username = channel_username[7:]
  
    
@@ -74,7 +72,7 @@ async def get_media(event):
             try:
                 await borg.download_media(
                     msg,dir) 
-            except FloodWaitError as e:
+            except FloodWaitError:
                 await asyncio.sleep(20)
 	        # await borg.download_media(
             #     msg,dir)          
